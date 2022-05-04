@@ -9,15 +9,18 @@ install_node () {
   sudo apt install wget unzip
   sudo apt update
   sudo apt-get install  build-essential cmake pkg-config libboost-all-dev libssl-dev libzmq3-dev libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline6-dev libldns-dev libexpat1-dev doxygen graphviz libpgm-dev qttools5-dev-tools libhidapi-dev libusb-dev libprotobuf-dev protobuf-compiler
-  git clone --recursive 'https://github.com/jojapoppa/Equilibria.git' equilibria && cd equilibria
+  git clone --branch jojabranch --recursive 'https://github.com/jojapoppa/Equilibria.git' equilibria && cd equilibria
   git submodule init && git submodule update
-  git checkout v10.2.0
+#  git checkout v10.2.0
   make
 
-  cd build/Linux/_HEAD_detached_at_v10.2.0_/release && mv bin ~/
-  
+#  cd build/Linux/_HEAD_detached_at_v10.2.0_/release && mv bin ~/
+  mkdir ~/bin
+  cd /home/admin/Node-Quick-Start/equilibria/build/Linux/jojabranch/release/bin
+  cp -r * ~/bin
+
   rm /etc/systemd/system/eqnode.service
-  cp ~/Equilibria/eqnode.service /etc/systemd/system/
+  cp /home/admin/Node-Quick-Start/eqnode.service /etc/systemd/system/
   sudo systemctl daemon-reload
   sudo systemctl enable eqnode.service
 }
@@ -51,13 +54,17 @@ update () {
 
 fork_update () {
   rm -r ~/Equilibria/equilibria
-  git clone --recursive 'https://github.com/jojapoppa/Equilibria.git' equilibria && cd equilibria
+  git clone --branch jojabranch --recursive 'https://github.com/jojapoppa/Equilibria.git' equilibria && cd equilibria
   git submodule init && git submodule update
-  git checkout v10.2.0
+  #git checkout v10.2.0
   make
   sudo systemctl stop eqnode.service
   rm -r ~/bin
-  cd build/Linux/_HEAD_detached_at_v10.2.0_/release && mv bin ~/
+  #cd build/Linux/_HEAD_detached_at_v10.2.0_/release && mv bin ~/
+  mkdir ~/bin
+  cd /home/admin/Node-Quick-Start/equilibria/build/Linux/jojabranch/release/bin 
+  cp -r * ~/bin
+
   sudo systemctl enable eqnode.service
   sudo systemctl start eqnode.service
 }
