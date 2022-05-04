@@ -16,11 +16,11 @@ install_node () {
 
 #  cd build/Linux/_HEAD_detached_at_v10.2.0_/release && mv bin ~/
   mkdir ~/bin
-  cd /home/admin/Node-Quick-Start/equilibria/build/Linux/jojabranch/release/bin
+  cd /root/Node-Quick-Start/equilibria/build/Linux/jojabranch/release/bin
   cp -r * ~/bin
 
   rm /etc/systemd/system/eqnode.service
-  cp /home/admin/Node-Quick-Start/eqnode.service /etc/systemd/system/
+  cp /root/Node-Quick-Start/eqnode.service /etc/systemd/system/
   sudo systemctl daemon-reload
   sudo systemctl enable eqnode.service
 }
@@ -62,7 +62,7 @@ fork_update () {
   rm -r ~/bin
   #cd build/Linux/_HEAD_detached_at_v10.2.0_/release && mv bin ~/
   mkdir ~/bin
-  cd /home/admin/Node-Quick-Start/equilibria/build/Linux/jojabranch/release/bin 
+  cd /root/Node-Quick-Start/equilibria/build/Linux/jojabranch/release/bin 
   cp -r * ~/bin
 
   sudo systemctl enable eqnode.service
