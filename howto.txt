@@ -1,2 +1,5 @@
 https://wiki.equilibria.network/tutorials-for-equilibria/how-to-setup-an-equilibria-oracle-node
 
+https://www.equilibria.network/blog/setup-equilibria-oracle-node
+
+
